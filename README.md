@@ -8,7 +8,7 @@ package main
 import "github.com/2asm/gojp"
 
 func main() {
-	sample_json := `
+    sample_json := `
         {
           "key": "String",
           "Number": 1,
@@ -18,28 +18,28 @@ func main() {
            }	
         }
     `
-	l := Lexer{
-		Str:  []rune(sample_json),
-		Cur:  0,
-		Size: len([]rune(sample_json)),
-	}
+    l := Lexer{
+        Str:  []rune(sample_json),
+        Cur:  0,
+        Size: len([]rune(sample_json)),
+    }
 
-	tokens, err := l.Lex()
-	if err != nil {
-		log.Fatal(err)
-	}
+    tokens, err := l.Lex()
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	p := Parser{
-		Tokens: tokens,
-	}
+    p := Parser{
+        Tokens: tokens,
+    }
 
     out, err := p.Parse()
-	if err != nil {
-		log.Fatal(err)
-	}
+    if err != nil {
+        log.Fatal(err)
+    }
 
     fmt.Println(out)
-}
+    }
 ```
 
 Output
