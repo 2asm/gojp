@@ -5,20 +5,25 @@ simple json parser in golang
 ## Quick start
 ``` Golang 
 package main
-import "github.com/2asm/gojp"
+
+import (
+    "github.com/2asm/gojp"
+    "fmt"
+    "log"
+)
 
 func main() {
     sample_json := `
         {
-          "key": "String",
-          "Number": 1,
-          "array": [1,2,3],	
-          "nested": {
-            "array2": [true, false, null, 234, "String"]
-           }	
+            "key": "String",
+            "Number": 1,
+            "array": [1,2,3],	
+            "nested": {
+                "array2": [true, false, null, 234, "String"]
+            }	
         }
     `
-    l := Lexer{
+    l := gojp.Lexer{
         Str:  []rune(sample_json),
         Cur:  0,
         Size: len([]rune(sample_json)),
@@ -29,7 +34,7 @@ func main() {
         log.Fatal(err)
     }
 
-    p := Parser{
+    p := gojp.Parser{
         Tokens: tokens,
     }
 
